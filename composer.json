@@ -4,7 +4,11 @@
     "description": "CRUD router for JSON apis.",
     "license": "MIT",
     "require-dev": {
-        "rregeer/phpunit-coverage-check": "^0.1.3"
+      "rregeer/phpunit-coverage-check": "^0.1.3",
+      "codeclimate/php-test-reporter": "^0.4.2",
+      "phpunit/phpunit": "^5.7",
+      "guzzlehttp/guzzle": "*"
+
     },
     "autoload": {
         "psr-4": {
@@ -12,8 +16,5 @@
             "gregoryv\\app\\": "app/",
             "gregoryv\\jsonstore\\": "jsonstore/"
         }
-    },
-    "require": {
-        "codeclimate/php-test-reporter": "^0.4.2"
     }
 }
