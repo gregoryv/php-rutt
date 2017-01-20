@@ -4,7 +4,7 @@ namespace gregoryv\rutt;
 /**
  *
  */
-class Rutt
+class Route
 {
   public $handler;
   public $parts;

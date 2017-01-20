@@ -22,7 +22,7 @@ class Mux implements MuxerInterface
   }
 
   /**
-   * @return Rutt if one is matched, null otherwise
+   * @return Route if one is matched, null otherwise
    *
    * @throws HttpException 404 if no uri matches or 501 if uri ok but no method matches
    */
@@ -36,7 +36,7 @@ class Mux implements MuxerInterface
         //printf("\nexpr=%s uri=%s count=%d", $expression, $uri, $parts);
         continue;
       }
-      $route = new Rutt($handler, $parts);
+      $route = new Route($handler, $parts);
 
       if(!mb_ereg_match($methodExpr, $method)) {
         //printf("\nmethodExpr=%s method=%s", $methodExpr, $method);

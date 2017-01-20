@@ -26,7 +26,7 @@ class MuxTest extends PHPUnit_Framework_TestCase
         $r = $mux->match($method, $uri);
         if($exp) {
           $this->assertNotNull($r, sprintf('match(%s, %s) should return a route', $method, $uri));
-          $this->assertInstanceOf(rutt\Rutt::class, $r);
+          $this->assertInstanceOf(rutt\Route::class, $r);
           $this->assertEquals($handler, $r->handler);
         } else {
           $this->fail(sprintf("Should throw HttpException(%d)", $code));
