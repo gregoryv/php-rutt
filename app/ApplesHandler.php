@@ -27,6 +27,7 @@ class ApplesHandler extends rutt\PartialResourceHandler
   }
 
   public function read(&$request, Response &$response) {
+    // We know the store only holds apples
     $apples = $this->store->select();
     $response->write($apples);
   }

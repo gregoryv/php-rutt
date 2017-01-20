@@ -8,9 +8,16 @@ class CRUDMiddleware extends AbstractMiddleware
 {
 
   private $mux;
+  private $overrideHandler;
+  private $factory;
 
-  public function __construct(MuxerInterface $mux) {
+  public function __construct(MuxerInterface $mux,
+                              HandlerFactoryInterface &$factory = null) {
     $this->mux = $mux;
+    $this->factory = $factory;
+    if($factory == null) {
+      $this->factory = new DefaultFactory();
+    }
   }
 
   public function route($method, $uri, &$request,
@@ -23,9 +30,16 @@ class CRUDMiddleware extends AbstractMiddleware
     }
     $handler = $route->handler;
 
-    // Maybe use factory here?
+    // Unless muxer already has an object registered use the factory
+    // to create the handler
     if(is_string($handler)) {
-      $handler = new $handler();
+      try {
+        $handler = $this->factory->create($route);
+      } catch(\RuntimeException $e) {
+        $response->writeError(new HttpException("Internal Server Error", 500, $e));
+        $response->write($e);
+        return;
+      }
     }
 
     // Map http method to handler method
