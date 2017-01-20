@@ -4,7 +4,7 @@ php:
   - 5.6
   - 7.0
 env:
-  - CODECLIMATE_REPO_TOKEN=aebe5f2c66892e24cadf71609fcaffc3e5650322a7370283e184c58c5fd9e8a0
+  - CODECLIMATE_REPO_TOKEN=3828be099949ca0e668f1d43e1f364bd4aaf9d03618ddeca36d1b076c4c82e61
 
 before_script:
   # UOPZ
