@@ -1,0 +1,19 @@
+sudo: false
+language: php
+php:
+  - 5.5
+  - 5.6
+env:
+  - CODECLIMATE_REPO_TOKEN=aebe5f2c66892e24cadf71609fcaffc3e5650322a7370283e184c58c5fd9e8a0
+
+before_script:
+  # UOPZ
+  #- git clone https://github.com/krakjoe/uopz.git
+  #- sh -c "cd uopz && phpize && ./configure && make && sudo make install"
+  #- echo "extension=uopz.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
+
+  - composer self-update
+  - composer install
+
+script: ./vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-clover build/logs/clover.xml tests
+after_script: ./vendor/bin/test-reporter
