@@ -12,13 +12,13 @@ class CRUDMiddlewareTest extends PHPUnit_Framework_TestCase
     // Prepare muxer
     $mux = new rutt\Mux();
     $regex = '\/(apples)\/';
-    $handler = new MockHandler();
+    $handler = new rutt\MockHandler();
     $mux->add('GET|PUT|DELETE|PATCH|POST|OPTIONS', $regex, $handler);
     $mux->add('GET', '\/nothing\/', 'gregoryv\rutt\NoopHandler');
 
     $mid = new rutt\CRUDMiddleware($mux);
     $request = ['name' => 'golden delicious'];
-    $response = new MockWriter();
+    $response = new rutt\MockWriter();
 
     $data = [
       ['PUT','/apples/', 'create',0],
@@ -44,48 +44,3 @@ class CRUDMiddlewareTest extends PHPUnit_Framework_TestCase
 }
 
 
-class MockHandler implements rutt\HandlerInterface {
-
-  public function create(&$request, rutt\ResponseWriterInterface &$response){
-    $response->write('create');
-  }
-
-  public function   read(&$request, rutt\ResponseWriterInterface &$response){
-    $response->write('read');
-  }
-
-  public function update(&$request, rutt\ResponseWriterInterface &$response){
-    $response->write('update');
-  }
-
-  public function delete(&$request, rutt\ResponseWriterInterface &$response){
-    $response->write('delete');
-  }
-
-}
-
-
-class MockWriter extends rutt\AbstractResponseWriter {
-
-  public $written;
-  public function write($arg) {
-    $this->written = $arg;
-  }
-
-  public $error;
-  public function writeError(rutt\HttpException $e) {
-    $this->error = $e;
-  }
-
-  public $accepted;
-  public function accepts($header) {
-    return $this->accepted;
-  }
-
-  public function clear() {
-    $this->written = null;
-    $this->error = null;
-    $this->accepted = true;
-  }
-
-}

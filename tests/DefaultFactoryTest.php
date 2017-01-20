@@ -18,6 +18,7 @@ class DefaultFactoryTest extends PHPUnit_Framework_TestCase
     $data = [
       ['gregoryv\rutt\NoopHandler', true],
       ['gregoryv\rutt\NoSuchThing', false],
+      [new rutt\NoopHandler(), true]
     ];
     foreach($data as list($cls, $expOk)) {
       $route = new rutt\Route($cls, []);
