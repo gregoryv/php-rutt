@@ -8,7 +8,7 @@ class RouterTest extends PHPUnit_Framework_TestCase
    * @test
    * @group unit
    */
-  public function test()
+  public function test_route()
   {
     $router = new rutt\Router();  
     $request = [];

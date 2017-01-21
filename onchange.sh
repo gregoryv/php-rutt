@@ -8,6 +8,7 @@ nameonly="${filename%.*}"
 
 case $extension in
     php)
-        phpunit --coverage-html /tmp/coverage
+        make coverage
+
         ;;
 esac
