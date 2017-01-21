@@ -58,7 +58,6 @@
 				<li><a href="class-gregoryv.rutt.PartialResourceHandler.html">PartialResourceHandler</a></li>
 				<li><a href="class-gregoryv.rutt.Route.html">Route</a></li>
 				<li><a href="class-gregoryv.rutt.Router.html">Router</a></li>
-				<li><a href="class-gregoryv.rutt.URIParser.html">URIParser</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -117,7 +116,7 @@
 <caption>Classes summary</caption>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.AbstractMiddleware.html">AbstractMiddleware</a></td>
-	<td></td>
+	<td>Implements the part of Middlewares which links them together.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.AbstractResponseWriter.html">AbstractResponseWriter</a></td>
@@ -129,19 +128,19 @@
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.DefaultFactory.html">DefaultFactory</a></td>
-	<td></td>
+	<td>Creates handlers from named classes, works with empty constructors.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.EchoWriter.html">EchoWriter</a></td>
-	<td></td>
+	<td>Uses the builtin echo function.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.JSONWriter.html">JSONWriter</a></td>
-	<td></td>
+	<td>Response writer for JSON responses.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.MockHandler.html">MockHandler</a></td>
-	<td></td>
+	<td>Defines methods for handling CRUD operations.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.MockWriter.html">MockWriter</a></td>
@@ -149,8 +148,7 @@
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.Mux.html">Mux</a></td>
-	<td><p>Mux is responsible for mapping method and uri to a destination
-class or object.</p></td>
+	<td>Mux uses regular expression for matching both method and uri.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.NoopHandler.html">NoopHandler</a></td>
@@ -166,15 +164,11 @@ class or object.</p></td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.Route.html">Route</a></td>
-	<td></td>
+	<td>Is the path the muxer selected should handle the request.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.Router.html">Router</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-gregoryv.rutt.URIParser.html">URIParser</a></td>
-	<td></td>
+	<td>Defines a sequence of middlewares the request should pass through.</td>
 </tr>
 </table>
 
@@ -186,15 +180,15 @@ class or object.</p></td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.HandlerInterface.html">HandlerInterface</a></td>
-	<td></td>
+	<td>Defines methods for handling CRUD operations.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.MiddlewareInterface.html">MiddlewareInterface</a></td>
-	<td></td>
+	<td>One step in the Router sequence handling a request.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.MuxerInterface.html">MuxerInterface</a></td>
-	<td></td>
+	<td>Responsible for finding a route for a given method and URI</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-gregoryv.rutt.ResponseWriterInterface.html">ResponseWriterInterface</a></td>
@@ -224,6 +218,6 @@ class or object.</p></td>
 </div>
 </div>
 <script src="resources/combined.js?7d77e23cf82f963ba5be1d2b615ea2d92ea6b1b6"></script>
-<script src="elementlist.js?25dc34483582ab327724e214dac182fe4fecbd60"></script>
+<script src="elementlist.js?15b2307c88d8599471dfb83fb22062bd13bb38d6"></script>
 </body>
 </html>

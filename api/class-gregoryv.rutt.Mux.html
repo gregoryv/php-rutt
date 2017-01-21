@@ -58,7 +58,6 @@
 				<li><a href="class-gregoryv.rutt.PartialResourceHandler.html">PartialResourceHandler</a></li>
 				<li><a href="class-gregoryv.rutt.Route.html">Route</a></li>
 				<li><a href="class-gregoryv.rutt.Router.html">Router</a></li>
-				<li><a href="class-gregoryv.rutt.URIParser.html">URIParser</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -114,8 +113,7 @@
 
 
 	<div class="description">
-	<p>Mux is responsible for mapping method and uri to a destination
-class or object.</p>
+	<p>Mux uses regular expression for matching both method and uri.</p>
 	</div>
 
 	<dl class="tree">
@@ -141,7 +139,7 @@ class or object.</p>
 		<b>Namespace:</b> <a href="namespace-gregoryv.html">gregoryv</a>\<a href="namespace-gregoryv.rutt.html">rutt</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-gregoryv.rutt.Mux.html#4-55" title="Go to source code">Mux.php</a>
+			<b>Located at</b> <a href="source-class-gregoryv.rutt.Mux.html#4-54" title="Go to source code">Mux.php</a>
 		<br>
 	</div>
 
@@ -161,7 +159,7 @@ class or object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-gregoryv.rutt.Mux.html#13-15" title="Go to source code">__construct</a>( )</code>
+		<code><a href="source-class-gregoryv.rutt.Mux.html#12-14" title="Go to source code">__construct</a>( )</code>
 
 		<div class="description short">
 			
@@ -191,7 +189,7 @@ class or object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_add">#</a>
-		<code><a href="source-class-gregoryv.rutt.Mux.html#17-22" title="Go to source code">add</a>( <span> <var>$methodExpr</var></span>, <span> <var>$expression</var></span>, <span> <var>$handler</var></span> )</code>
+		<code><a href="source-class-gregoryv.rutt.Mux.html#16-21" title="Go to source code">add</a>( <span> <var>$methodExpr</var></span>, <span> <var>$expression</var></span>, <span> <var>$handler</var></span> )</code>
 
 		<div class="description short">
 			<p>Adds rule for matching a route</p>
@@ -221,7 +219,7 @@ class or object.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_match">#</a>
-		<code><a href="source-class-gregoryv.rutt.Mux.html#24-54" title="Go to source code">match</a>( <span> <var>$method</var></span>, <span> <var>$uri</var></span> )</code>
+		<code><a href="source-class-gregoryv.rutt.Mux.html#23-53" title="Go to source code">match</a>( <span> <var>$method</var></span>, <span> <var>$uri</var></span> )</code>
 
 		<div class="description short">
 			

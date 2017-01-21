@@ -58,7 +58,6 @@
 				<li><a href="class-gregoryv.rutt.PartialResourceHandler.html">PartialResourceHandler</a></li>
 				<li><a href="class-gregoryv.rutt.Route.html">Route</a></li>
 				<li><a href="class-gregoryv.rutt.Router.html">Router</a></li>
-				<li><a href="class-gregoryv.rutt.URIParser.html">URIParser</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -113,6 +112,9 @@
 	<h1>Class AbstractMiddleware</h1>
 
 
+	<div class="description">
+	<p>Implements the part of Middlewares which links them together.</p>
+	</div>
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
@@ -142,7 +144,7 @@
 		<b>Namespace:</b> <a href="namespace-gregoryv.html">gregoryv</a>\<a href="namespace-gregoryv.rutt.html">rutt</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-gregoryv.rutt.AbstractMiddleware.html#4-23" title="Go to source code">AbstractMiddleware.php</a>
+			<b>Located at</b> <a href="source-class-gregoryv.rutt.AbstractMiddleware.html#4-31" title="Go to source code">AbstractMiddleware.php</a>
 		<br>
 	</div>
 
@@ -162,14 +164,16 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setNext">#</a>
-		<code><a href="source-class-gregoryv.rutt.AbstractMiddleware.html#12-14" title="Go to source code">setNext</a>( <span><code><a href="class-gregoryv.rutt.MiddlewareInterface.html">gregoryv\rutt\MiddlewareInterface</a></code> <var>$next</var></span> )</code>
+		<code><a href="source-class-gregoryv.rutt.AbstractMiddleware.html#12-18" title="Go to source code">setNext</a>( <span><code><a href="class-gregoryv.rutt.MiddlewareInterface.html">gregoryv\rutt\MiddlewareInterface</a></code> <var>$next</var></span> )</code>
 
 		<div class="description short">
-			
+			<p>There can only be one next middleware, multiple calls to this method
+will overwrite previously set middlewares.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			
+			<p>There can only be one next middleware, multiple calls to this method
+will overwrite previously set middlewares.</p>
 
 
 
@@ -194,14 +198,16 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_next">#</a>
-		<code><a href="source-class-gregoryv.rutt.AbstractMiddleware.html#16-21" title="Go to source code">next</a>( <span> <var>$method</var></span>, <span> <var>$uri</var></span>, <span> <var>&amp; $request</var></span>, <span><code><a href="class-gregoryv.rutt.ResponseWriterInterface.html">gregoryv\rutt\ResponseWriterInterface</a></code> <var>&amp; $response</var></span> )</code>
+		<code><a href="source-class-gregoryv.rutt.AbstractMiddleware.html#20-29" title="Go to source code">next</a>( <span> <var>$method</var></span>, <span> <var>$uri</var></span>, <span> <var>&amp; $request</var></span>, <span><code><a href="class-gregoryv.rutt.ResponseWriterInterface.html">gregoryv\rutt\ResponseWriterInterface</a></code> <var>&amp; $response</var></span> )</code>
 
 		<div class="description short">
-			
+			<p>Calls the next middleware route method if there is one, does nothing
+otherwise.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			
+			<p>Calls the next middleware route method if there is one, does nothing
+otherwise.</p>
 
 
 
