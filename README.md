@@ -4,6 +4,8 @@
 
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=gregoryv&url=https%3A%2F%2Fgithub.com%2Fgregoryv%2Fphp-rutt&title=php-rutt&language=php&tags=github&category=software)
 
+* [API reference](http://gregoryv.github.io/php-rutt/api/namespace-gregoryv.rutt.html)
+
 # php-rutt
 
 php routing library for REST + JSON backends
