@@ -12,11 +12,7 @@ class ApplesHandler extends rutt\PartialResourceHandler
 {
   private $store;
 
-  public function __construct() {
-    // This should be put in a central location
-    // handlers should be provided with a store
-    $store = new Store();
-    $store->load('app/database.json');
+  public function __construct(Store $store) {
     $this->store = $store;
   }
 

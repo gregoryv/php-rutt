@@ -1,7 +1,5 @@
 <?php
-/**
- * Example application serving only json
- */
+// Example application using the gregoryv\rutt router
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use gregoryv\rutt;
@@ -14,11 +12,14 @@ try {
   // Lets make sure the client understands JSON
   $writer->accepts($_SERVER['HTTP_ACCEPT']);
 
-  // Define all middlewares the router should use
-  $router = new rutt\Router();
+  // Use a muxer that will match uris and methods to specific handlers
   $mux = new rutt\Mux();
   $mux->add('GET', '\/(apples)\/', 'gregoryv\app\ApplesHandler');
-  $router->append( new rutt\CRUDMiddleware($mux) );
+
+  // Define all middlewares the router should use
+  $router = new rutt\Router();
+  $factory = new app\HandlerFactory();
+  $router->append( new rutt\CRUDMiddleware($mux, $factory) );
 
   // Route the request
   $method = $_SERVER['REQUEST_METHOD'];
