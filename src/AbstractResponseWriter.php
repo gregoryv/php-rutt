@@ -14,20 +14,11 @@ abstract class AbstractResponseWriter implements ResponseWriterInterface
   public function __construct(WriterInterface $bodyWriter = null,
                               WriterInterface $headerWriter = null) {
     $this->bodyWriter = empty($bodyWriter) ? new EchoWriter() : $bodyWriter;
-    $this->headerWriter = $headerWriter;
+    $this->headerWriter = empty($headerWriter) ? new BuiltinHeaderWriter() : $headerWriter;
   }
 
-  /**
-   * Uses phps builtin header function
-   */
   public function writeHeader($header) {
-    if($this->headerWriter == null) {
-      // @codeCoverageIgnoreStart
-      header($header);
-      // @codeCoverageIgnoreEnd
-    } else {
-      $this->headerWriter->write($header);
-    }
+    $this->headerWriter->write($header);
   }
 
 }
