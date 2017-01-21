@@ -2,7 +2,7 @@
 namespace gregoryv\rutt;
 
 /**
- *
+ * Is the path the muxer selected should handle the request.
  */
 class Route
 {

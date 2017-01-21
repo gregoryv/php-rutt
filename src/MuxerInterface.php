@@ -2,7 +2,7 @@
 namespace gregoryv\rutt;
 
 /**
- *
+ * Responsible for finding a route for a given method and URI
  */
 interface MuxerInterface
 {

@@ -2,7 +2,7 @@
 namespace gregoryv\rutt;
 
 /**
- *
+ * One step in the Router sequence handling a request.
  */
 interface MiddlewareInterface
 {

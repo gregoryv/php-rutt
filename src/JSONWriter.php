@@ -2,7 +2,7 @@
 namespace gregoryv\rutt;
 
 /**
- *
+ * Response writer for JSON responses.
  */
 class JSONWriter extends AbstractResponseWriter
 {
@@ -17,6 +17,9 @@ class JSONWriter extends AbstractResponseWriter
     $this->write(['error' => $header]);
   }
 
+  /**
+   * @return true if the header contains application/json or *\/*
+   */
   public function accepts($header) {
     $parts = explode(',', $header);
     foreach($parts as $value) {

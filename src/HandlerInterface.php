@@ -2,7 +2,7 @@
 namespace gregoryv\rutt;
 
 /**
- *
+ * Defines methods for handling CRUD operations.
  */
 interface HandlerInterface
 {

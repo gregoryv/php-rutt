@@ -2,7 +2,7 @@
 namespace gregoryv\rutt;
 
 /**
- *
+ * Defines a sequence of middlewares the request should pass through.
  */
 class Router
 {

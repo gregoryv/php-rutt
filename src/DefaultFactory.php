@@ -2,7 +2,7 @@
 namespace gregoryv\rutt;
 
 /**
- *
+ * Creates handlers from named classes, works with empty constructors.
  */
 class DefaultFactory
 {

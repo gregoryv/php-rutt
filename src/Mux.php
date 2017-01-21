@@ -2,8 +2,7 @@
 namespace gregoryv\rutt;
 
 /**
- * Mux is responsible for mapping method and uri to a destination
- * class or object.
+ * Mux uses regular expression for matching both method and uri.
  */
 class Mux implements MuxerInterface
 {
