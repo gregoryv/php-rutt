@@ -130,7 +130,7 @@
 		<b>Namespace:</b> <a href="namespace-gregoryv.html">gregoryv</a>\<a href="namespace-gregoryv.rutt.html">rutt</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-gregoryv.rutt.HandlerFactoryInterface.html#4-17" title="Go to source code">HandlerFactoryInterface.php</a>
+			<b>Located at</b> <a href="source-class-gregoryv.rutt.HandlerFactoryInterface.html#4-18" title="Go to source code">HandlerFactoryInterface.php</a>
 		<br>
 	</div>
 
@@ -150,7 +150,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_create">#</a>
-		<code><a href="source-class-gregoryv.rutt.HandlerFactoryInterface.html#10-15" title="Go to source code">create</a>( <span><code><a href="class-gregoryv.rutt.Route.html">gregoryv\rutt\Route</a></code> <var>&amp; $route</var></span> )</code>
+		<code><a href="source-class-gregoryv.rutt.HandlerFactoryInterface.html#10-16" title="Go to source code">create</a>( <span><code><a href="class-gregoryv.rutt.Route.html">gregoryv\rutt\Route</a></code> <var>&amp; $route</var></span> )</code>
 
 		<div class="description short">
 			
@@ -168,10 +168,13 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					mixed<br><p>Handler it's up to the Middleware to call it,
-        null if no handler could be created</p>
+					mixed<br>Handler it's up to the Middleware to call it
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					Exception<br>if handler cannot be created
+				</div>
 
 
 
