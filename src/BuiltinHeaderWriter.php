@@ -2,7 +2,7 @@
 namespace gregoryv\rutt;
 
 /**
- * Uses the builtin echo function.
+ * Uses the builtin header function.
  */
 class BuiltinHeaderWriter implements WriterInterface
 {
