@@ -14,7 +14,10 @@ try {
 
   // Use a muxer that will match uris and methods to specific handlers
   $mux = new rutt\Mux();
-  $mux->add('GET', '\/(apples)\/', 'gregoryv\app\ApplesHandler');
+  // We define only one route for handling all /RESOURCE/[ID]
+  // The HandlerFactory decides which handler to use based on the named resource
+  $mux->add('GET|POST|PATCH|DELETE|PUT', '\/(\w+)\/?(\d+)?', 'resource');
+
 
   // Define all middlewares the router should use
   $router = new rutt\Router();

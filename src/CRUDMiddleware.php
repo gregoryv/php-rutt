@@ -35,9 +35,11 @@ class CRUDMiddleware extends AbstractMiddleware
     if(is_string($handler)) {
       try {
         $handler = $this->factory->create($route);
+      } catch(HttpException $e) {
+        $response->writeError($e);
+        return;
       } catch(\Exception $e) {
         $response->writeError(new HttpException("Internal Server Error", 500, $e));
-        $response->write($e);
         return;
       }
     }

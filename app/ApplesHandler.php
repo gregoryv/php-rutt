@@ -11,9 +11,11 @@ use gregoryv\jsonstore\Store;
 class ApplesHandler extends rutt\PartialResourceHandler
 {
   private $store;
+  private $resourceid;
 
-  public function __construct(Store $store) {
+  public function __construct(Store $store, $resourceid = null) {
     $this->store = $store;
+    $this->resourceid = $resourceid;
   }
 
   public function create(&$request, Response &$response) {
@@ -25,6 +27,18 @@ class ApplesHandler extends rutt\PartialResourceHandler
   public function read(&$request, Response &$response) {
     // We know the store only holds apples
     $apples = $this->store->select();
+    if($this->resourceid != null) {
+      foreach($apples as $apple) {
+        if($apple->id == $this->resourceid) {
+          $response->write($apple);
+          return;
+        }
+      }
+      $nof = new rutt\HttpException('Not Found', 404);
+      $response->writeError($nof);
+      return;
+    }
+
     $response->write($apples);
   }
 
