@@ -10,15 +10,8 @@ class CRUDMiddlewareTest extends PHPUnit_Framework_TestCase
    */
   public function route() {
     // Prepare muxer
-    $mux = new rutt\Mux();
-    $regex = '\/(apples)\/';
-    $handler = new rutt\MockHandler();
-    $mux->add('GET|PUT|DELETE|PATCH|POST|OPTIONS', $regex, $handler);
-    $mux->add('GET', '\/nothing\/', 'gregoryv\rutt\NoopHandler');
-    $mux->add('GET', '\/blowup\/', 'dynamite :-)');
-
     $factory = new MockFactory();
-    $mid = new rutt\CRUDMiddleware($mux);
+    $mid = new rutt\CRUDMiddleware($factory);
     $request = ['name' => 'golden delicious'];
     $response = new rutt\MockWriter();
 
@@ -31,7 +24,7 @@ class CRUDMiddlewareTest extends PHPUnit_Framework_TestCase
       ['GET','/nothing/', null, 0],
       ['GET','/oranges/', null, 404],
       ['OPTIONS','/apples/', null, 501], // CRUDMiddleware only uses PUT GET PATCH POST and DELETE
-      ['GET','/blowup/', null, 500]
+      ['POST', '/blowup/', null, 500]
     ];
     foreach($data as list($method, $uri, $expWritten, $code)) {
       $response->clear();
@@ -51,20 +44,17 @@ class CRUDMiddlewareTest extends PHPUnit_Framework_TestCase
    * @group unit
    */
   public function middleware_fails_when_no_matchin_handler_is_found() {
-    $mux = new rutt\Mux();
-    $regex = '\/(apples)\/';
-    $mux->add('GET|PUT|DELETE|PATCH|POST|OPTIONS', $regex, 'this is what fails');
     $factory = new MockFactory();
-    $mid = new rutt\CRUDMiddleware($mux, $factory);
+    $mid = new rutt\CRUDMiddleware($factory);
     $request = [];
     $response = new rutt\MockWriter();
 
     $data = [
-      ['PUT','/apples/'],
-      ['GET','/apples/'],
-      ['DELETE','/apples/' ],
-      ['PATCH','/apples/' ],
-      ['POST','/apples/'],
+      ['PUT','/oranges/'],
+      ['GET','/oranges/'],
+      ['DELETE','/oranges/'],
+      ['PATCH','/oranges/' ],
+      ['POST','/oranges/']
     ];
     foreach($data as list($method, $uri)) {
       $response->clear();
@@ -78,7 +68,13 @@ class CRUDMiddlewareTest extends PHPUnit_Framework_TestCase
 
 class MockFactory implements rutt\HandlerFactoryInterface {
 
-  public function create(rutt\Route &$route) {
+  public function create($resource, $id=null) {
+    if($resource == 'apples') {
+      return new rutt\MockHandler();
+    }
+    if($resource == 'blowup') {
+      throw new \Exception('testing');
+    }
     throw new rutt\HttpException("NotFound", 404);
   }
 }

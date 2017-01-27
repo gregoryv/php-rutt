@@ -16,7 +16,7 @@ class Mux implements MuxerInterface
   /**
    * Adds rule for matching a route
    */
-  public function add($methodExpr, $expression, $handler) {
+  public function add($methodExpr, $expression, $handler=null) {
     $this->map[] = [$methodExpr, $expression, $handler];
   }
 
@@ -28,7 +28,6 @@ class Mux implements MuxerInterface
   public function match($method, $uri) {
     $route = null;
     $methodFound = false;
-    // todo to be able to throw 501 if
     foreach($this->map as list($methodExpr, $expression, $handler)) {
 
       if(mb_ereg($expression, $uri, $parts) == 0) {

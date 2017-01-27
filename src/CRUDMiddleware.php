@@ -8,16 +8,13 @@ class CRUDMiddleware extends AbstractMiddleware
 {
 
   private $mux;
-  private $overrideHandler;
   private $factory;
 
-  public function __construct(MuxerInterface $mux,
-                              HandlerFactoryInterface &$factory = null) {
+  public function __construct(HandlerFactoryInterface &$factory) {
+    $mux = new Mux();
+    $mux->add('GET|POST|PATCH|DELETE|PUT', '\/(\w+)\/?(\d+)?', 'resource');
     $this->mux = $mux;
     $this->factory = $factory;
-    if($factory == null) {
-      $this->factory = new DefaultFactory();
-    }
   }
 
   public function route($method, $uri, &$request,
@@ -28,21 +25,21 @@ class CRUDMiddleware extends AbstractMiddleware
       $response->writeError($e);
       return;
     }
-    $handler = $route->handler;
-
+    $resource = $route->parts[1];
+    $id = $route->parts[2];
     // Unless muxer already has an object registered use the factory
     // to create the handler
-    if(is_string($handler)) {
-      try {
-        $handler = $this->factory->create($route);
-      } catch(HttpException $e) {
-        $response->writeError($e);
-        return;
-      } catch(\Exception $e) {
-        $response->writeError(new HttpException("Internal Server Error", 500, $e));
-        return;
-      }
+
+    try {
+      $handler = $this->factory->create($resource, $id);
+    } catch(HttpException $e) {
+      $response->writeError($e);
+      return;
+    } catch(\Exception $e) {
+      $response->writeError(new HttpException("Internal Server Error", 500, $e));
+      return;
     }
+
 
     // Map http method to handler method
     switch ($method) {
@@ -61,9 +58,6 @@ class CRUDMiddleware extends AbstractMiddleware
     case 'DELETE':
       $handler->delete($request, $response);
       break;
-    default:
-      $response->writeError(new HttpException("Not Implemented", 501));
-      return;
     }
     $this->next($method, $uri, $request, $response);
   }
